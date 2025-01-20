@@ -1,0 +1,27 @@
+<!-- <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please enter a valid token">
+      <input nz-input formControlName="token" placeholder="Enter Authorization Key" />
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" [disabled]="!loginForm.valid">Login</button>
+</form> -->
+<nz-card nzTitle="Login" style="width: 400px; margin: auto; margin-top: 100px;">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <nz-form-item class="d-flex flex-column">
+      <h6 span="6" class="font-weight-bold">Authorization Key</h6>
+      <nz-form-control [nzSpan]="18" nzErrorTip="">
+        <input nz-input formControlName="token" placeholder="Enter your authorization key" class="rounded border-1 px-2"/>
+      </nz-form-control>
+      @if(this.loginForm.get('token')?.value === '' && this.loginForm.get('token')?.touched) {
+        <small class="text-danger">Please enter a valid token</small>
+      }
+    </nz-form-item>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button nz-button htmlType="submit" [disabled]="loginForm.invalid" class="rounded-pill px-3" nzSize="large">
+        Login
+      </button>
+    </div>
+  </form>
+</nz-card>

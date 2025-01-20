@@ -1,0 +1,17 @@
+<div *ngIf="isLoggedIn; else loginTemplate">
+  <nz-layout>
+    <nz-header>
+      <div class="header">
+        <span class="title">Cloudonix.io App</span>
+        <button nz-button nzType="link" (click)="logout()" class="rounded-pill">Logout</button>
+      </div>
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</div>
+
+<ng-template #loginTemplate>
+  <router-outlet></router-outlet>
+</ng-template>

@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ng-zorro-antd/ng-zorro-antd.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+$primary-color: #56BFB5;
+$secondary-color: #D91882;
+
+
+button {
+  height: 40px;
+  width: fit-content;
+  background-color: $secondary-color;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  &:hover {
+    background-color: $primary-color;
+    color: $secondary-color;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,22 @@
+<nz-card nzTitle="Product Details" [nzBordered]="true" style="width: 600px; margin: auto;">
+  <nz-descriptions [nzBordered]="true" [nzColumn]="1">
+    <nz-descriptions-item nzTitle="SKU">{{ product?.sku }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Name">{{ product?.name }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Price">{{ product?.price | currency }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Description">{{ product?.description }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Type">{{ product?.profile?.type || 'Furniture' }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Available">
+      <nz-tag [nzColor]=" 'green' ">
+        {{ 'Yes'  }}
+      </nz-tag>
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Backlog">
+      {{ product?.profile?.backlog !== undefined ? product?.profile?.backlog : 'Not Set' }}
+    </nz-descriptions-item>
+  </nz-descriptions>
+
+  <div style="margin-top: 20px; text-align: center;" class="d-flex justify-content-start">
+    <button nz-button nzType="default" (click)="goBack()" class="rounded-pill ">Back</button>
+    <button nz-button nzType="primary" (click)="editProduct()" class="rounded-pill" style="margin-left: 1rem; ">Edit</button>
+  </div>
+</nz-card>

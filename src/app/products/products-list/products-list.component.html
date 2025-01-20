@@ -1,0 +1,97 @@
+<!-- <nz-table [nzBordered]="true" [nzData]="products" [nzSize]="'middle'" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.sku }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.cost | currency }}</td>
+      <td>{{ product.description }}</td>
+      <td>
+        <button nz-button nzType="link" (click)="editProduct(product.id)">Edit</button>
+        <button nz-button nzDanger (click)="deleteProduct(product.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<div style="margin-top: 20px;">
+  <button nz-button nzType="primary" (click)="createProduct()">Add New Product</button>
+</div> -->
+<div class="container mt-4">
+
+  <h1>Products</h1>
+  <div class="table-responsive" style="max-height: 1000px;">
+    <nz-table
+      [nzBordered]="true"
+      [nzData]="products"
+      [nzSize]="'middle'"
+      [nzShowPagination]="false"
+      [nzScroll]="{ x: '1000px', y: '800px' }"
+    >
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.sku }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.cost | currency }}</td>
+          <td>{{ product.description }}</td>
+          <!-- <td class="d-flex justify-content-evenly">
+            <nz-dropdown>
+              <button nz-button nz-dropdown>
+                Actions <i nz-icon nzType="down"></i>
+              </button>
+              <ul nz-menu nz-dropdown-menu>
+                <li nz-menu-item (click)="editProduct(product.id)">
+                  <i nz-icon nzType="edit" nzTheme="outline"></i> Edit
+                </li>
+                <li nz-menu-item (click)="deleteProduct(product.id)">
+                  <i nz-icon nzType="delete" nzTheme="outline"></i> Delete
+                </li>
+              </ul>
+            </nz-dropdown>
+          </td> -->
+          <td class="text-center text-dark px-0">
+            <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+              <span nz-icon nzType="down" nzTheme="outline"></span>
+            </button>
+
+            <nz-dropdown-menu #menu="nzDropdownMenu" class="text-dark">
+              <ul nz-menu class="text-dark" style="color: black;">
+                <li nz-menu-item (click)="editProduct(product.id)">
+                  <p class="text-dark px-0 mb-0">Edit</p>
+                </li>
+                <li nz-menu-item (click)="deleteProduct(product.id)">
+                  <p class="text-dark px-0 mb-0">Delete</p>
+                </li>
+                <li nz-menu-item  (click)="detailProduct(product.id)" >
+                  <p class="text-dark px-0 mb-0">Details</p>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+
+  <div class="my-3">
+    <button nz-button nzSize="large" [routerLink]="['/products/create']"  class="rounded-pill ">Add Product</button>
+  </div>
+</div>
